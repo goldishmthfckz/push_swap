@@ -5,7 +5,7 @@ int main(int ac, char **av)
 	pile *a;
 
 	a = createlist(ac, av);
-	if (!a || error(a))
+	if (!a || parsing(a))
 	{
 		//free a
 		write(1, "Error\n", 6);
