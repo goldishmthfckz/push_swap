@@ -45,7 +45,7 @@ int	alpha(char **av)
 }
 
 //checker si chaque av est ds la limite du long
-int	arglen(char **av)
+int	avlen(char **av)
 {
 	int	i;
 
@@ -58,5 +58,17 @@ int	arglen(char **av)
 			return (1);
 		i++;
 	}
+	return (0);
+}
+
+//parsing
+int	parsing(char **av)
+{
+	if (doublons(av))
+		return (1);
+	if (alpha(av))
+		return (1);
+	if (avlen(av))
+		return (1);
 	return (0);
 }
