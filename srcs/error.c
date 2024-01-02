@@ -1,20 +1,45 @@
 #include "../incl/push_swap.h"
 
 //checker s'il y a des doublons
-int	doublons(pile *a)
+int	doublons(char **argv)
 {
-	pile *tmp;
+	int	i;
+	int	j;
 
-	while (a)
+	i = 1;
+	while (argv[i])
 	{
-		tmp = a->next;
-		while (tmp)
+		j = i + 1;
+		while (argv[j])
 		{
-			if (a->n == tmp->n)
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
 				return (1);
-			tmp = tmp->next;
+			j++;
 		}
-		a = a->next;
+		i++;
+	}
+	return (0);
+}
+
+//checker s'il y a des lettres
+int	alpha(char **argv)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (argv[i])
+	{
+		j = 0;
+		if (argv[i][0] == '-')
+			j++;
+		while (argv[i][j])
+		{
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+				return (1);
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }
