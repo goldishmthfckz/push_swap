@@ -31,7 +31,14 @@ pile	*createnode(int nb);
 void	addback(pile **a, pile *new);
 pile	*createlist(int ac, char **av);
 
+//error
+int	doublons(char **av);
+int	alpha(char **av);
+int	avlen(char **av);
+int	parsing(char **av);
+
 //utils
 pile	*lastnode(pile *list);
+int	sorted(pile *a);
 
 #endif
