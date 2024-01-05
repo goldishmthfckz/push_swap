@@ -2,7 +2,7 @@
 
 //derniere node
 //tri ou pas???
-//
+//taille de la pile
 
 //renvoi de la derniere node
 pile	*lastnode(pile *list)
@@ -28,4 +28,17 @@ int	sorted(pile *a)
 		a = a->next;
 	}
 	return (1);
+}
+
+int	ft_pilelen(pile *a)
+{
+	size_t i;
+
+	i = 0;
+	while (a)
+	{
+		a = a->next;
+		i++;
+	}
+	return (i);
 }
