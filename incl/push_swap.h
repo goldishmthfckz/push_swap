@@ -16,29 +16,32 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../libft/incl/libft.h"
+// # include "../libft/incl/libft.h"
 
-typedef struct pile
+typedef struct list
 {
 	int	n;
 	int i;
-	struct pile *prev;
-	struct pile	*next;
-}	pile;
+	struct list *prev;
+	struct list	*next;
+}	list;
 
 //createlist
-pile	*createnode(int nb);
-void	addback(pile **a, pile *new);
-pile	*createlist(int ac, char **av);
+list	*createnode(int nb);
+void	addback(list **a, list *new);
+list	*createlist(int ac, char **av);
 
 //error
-int	doublons(char **av);
-int	alpha(char **av);
-int	avlen(char **av);
+int	nodoublons(char **av);
+int	noalpha(char **av);
+int	nottoolong(char **av);
 int	parsing(char **av);
 
 //utils
-pile	*lastnode(pile *list);
-int	sorted(pile *a);
+list	*lastnode(list *a);
+int	sorted(list *a);
+
+//autres
+int	ft_long_atoi(char *str);
 
 #endif
