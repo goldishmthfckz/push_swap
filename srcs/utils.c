@@ -1,61 +1,45 @@
-#include "../incl/push_swap.h"
+#include "push_swap.h"
 
-//n(ombre) de la derniere node
-//tri ou pas
-//taille de la pile
-//i(ndex) du n(ombre) dans pile x
+//lastnode
+//sorted
+//listlen
 
-//renvoi de la derniere node
-pile	*lastnode(pile *node)
+//nombre de la derniere node de la liste a
+list	*lastnode(list *a)
 {
-	if (!node)
+	if (!a)
 		return NULL;
-	while (node->next)
-		node = node->next;
-	return (node);
+	while (a->next)
+		a = a->next;
+	return a;
 }
 
-//1 si triee, 0 sinon
-int	sorted(pile *a)
+//liste a triee ou pas?
+int	sorted(list *a)
 {
-	int	i;
+	int nb;
 
-	i = a->nbr;
+	nb = a->n;
 	while (a)
 	{
-		if (i > a->nbr)
-			return (0);
-		i = a->nbr;
+		if (nb > a->n)
+			return 0;
+		nb = a->n;
 		a = a->next;
 	}
 	return (1);
 }
 
-int	ft_pilelen(pile *a)
+//longueur de la liste a
+int	listlen(list *a)
 {
-	size_t i;
+	int len;
 
-	i = 0;
+	len = 0;
 	while (a)
 	{
 		a = a->next;
-		i++;
+		len++;
 	}
-	return (i);
+	return (len);
 }
-
-//index du nombre n contenu dans la pile a
-int	ipile(pile *a, int n)
-{
-	int i;
-
-	i = 0;
-	while (a->nbr != n)
-	{
-		i++;
-		a = a->next;
-	}
-	a->i = 0;
-	return (i);
-}
-

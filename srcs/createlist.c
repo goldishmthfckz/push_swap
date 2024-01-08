@@ -1,50 +1,48 @@
-#include "../incl/push_swap.h"
+#include "push_swap.h"
 
-//creer une node
-pile	*createnode(int nb)
+//creer une node a partir des argv
+list *createnode(int nb)
 {
-	pile *new;
+	list *new;
 
-
-	new = malloc(sizeof(pile));
+	new = malloc(sizeof(list));
 	if (!new)
-		write(1, "Error\n", 6);
+		write(1, "Error\n", 1);
 	new->n = nb;
 	new->next = NULL;
 	return (new);
 }
 
-//ajouter une node a une pile
-void	addback(pile **a, pile *new)
+//ajouter une node a la fin d'une list
+void addback(list **a, list *new)
 {
 	if (!a)
 		return ;
 	if (!*a)
 		*a = new;
 	else
-		(lastnode(*a))->next = new;
-
+		(lastnode(*a)->next = new);
 }
 
-// creer une pile des arguments
-pile	*createlist(int ac, char **av)
+//generer une liste a partir d'arguments
+list *createlist(int ac, char **av)
 {
-	pile *a;
+	list *a;
 	int i;
 	int n;
 
 	i = 1;
+	a = NULL;
 	if (ac < 2)
-		write(1, "Error\n", 6);
+		write(1, "Error\n", 1);
 	else
 	{
 		while (i < ac)
 		{
-			n = ft_atoi(av[i]);
+			n = atoi(av[i]);
 			addback(&a, createnode(n));
 			i++;
 		}
 	}
 	return (a);
 }
-
