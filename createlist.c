@@ -29,18 +29,21 @@ list *createlist(int ac, char **av)
 {
 	list *a;
 	int i;
-	int n;
+	int nb;
 
 	i = 1;
 	a = NULL;
 	if (ac < 2)
-		write(1, "Error\n", 1);
+	{
+		write(1, "Error\n", 6);
+		exit(1);
+	}
 	else
 	{
 		while (i < ac)
 		{
-			n = atoi(av[i]);
-			addback(&a, createnode(n));
+			nb = ft_long_atoi(av[i]);
+			addback(&a, createnode(nb));
 			i++;
 		}
 	}

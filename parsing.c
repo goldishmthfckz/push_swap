@@ -48,26 +48,26 @@ int	noalpha(char **av)
 }
 
 //marche pas!!!
-//int	nottoolong(char **av)
-//{
-//	int i;
+int	nottoolong(char **av)
+{
+	int i;
 
-//	i = 1;
-//	while (av[i])
-//	{
-//		if (ft_long_atoi(av[i]) < -2147483648)
-//			return (0);
-//		else if (ft_long_atoi(av[i]) > 2147483647)
-//			return (0);
-//		i++;
-//	}
-//	return (1);
-//}
+	i = 1;
+	while (av[i])
+	{
+		if (ft_long_atoi(av[i]) < -214748364)
+			return (0);
+		else if (ft_long_atoi(av[i]) > 214748364)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
-//retourne 1 si toutes les conditions propices sont reunies
+//retourne 1 si toutes les conditions sont validees
 int	parsing(char **av)
 {
-	if (nodoublons(av) && noalpha(av))
+	if (nodoublons(av) && noalpha(av) && nottoolong(av))
 		return 1;
 	return 0;
 }

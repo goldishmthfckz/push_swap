@@ -4,14 +4,24 @@ int main(int ac, char **av)
 {
 	list *a;
 
+	if (!parsing(av))
+		printf("Error (parsing)");
 	a = createlist(ac, av);
-	if (!a || !parsing(av))
+	if (!a)
 	{
-		//free a
-		write(1, "Error\n", 6);
+		ft_free(&a);
+		printf("Error (probleme avec a");
 	}
+	//while(a)
+	//{
+	//	printf("%i\n", a->n);
+	//	a = a->next;
+	//}
 	if (!sorted(a))
-		write(1,"i:\n", 3);
-	//free a car on en a plus besoin
+	{
+		printf("pas triee, instructions:\n");
+		sort(&a);
+	}
+	ft_free(&a);
 	return (0);
 }

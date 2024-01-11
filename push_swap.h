@@ -21,8 +21,8 @@
 typedef struct list
 {
 	int	n;
-	int i;
-	struct list *prev;
+	int	index;
+	int	coups;
 	struct list	*next;
 }	list;
 
@@ -37,19 +37,27 @@ int	noalpha(char **av);
 int	nottoolong(char **av);
 int	parsing(char **av);
 
-//operations
-void	ft_swap(list **a, char c);
-void	ft_ss(list **a, list **b);
-void	ft_push(list **dst, list **src, char c);
-void	ft_rotate(list **a, char c);
-void	ft_rr(list **a, list **b);
-void	ft_revrotate(list **a, char c);
-void	ft_rrr(list **a, list **b);
+//sort
+void	sort3(list **a);
+void	sort(list **a);
 
 //utils
 list	*lastnode(list *a);
 int	sorted(list *a);
 int	ft_listlen(list *a);
+void	ft_free(list **a);
+int	ft_min(list *a);
+int	ft_max(list *a);
+int	ilist(list *a, int nb);
+
+//operations 1
+void	ft_swap(list **a, char c);
+void	ft_ss(list **a, list **b);
+void ft_push(list **dst, list **src, char c);
+void	ft_rotate(list **a, char c);
+void	ft_rr(list **a, list **b);
+void	ft_revrotate(list **a, char c);
+void	ft_rrr(list **a, list **b);
 
 //autres
 int	ft_long_atoi(char *str);

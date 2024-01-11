@@ -2,7 +2,7 @@
 
 void	ft_swap(list **a, char c)
 {
-	list	*tmp;
+	list *tmp;
 
 	if (*a && (*a)->next)
 	{
@@ -24,10 +24,10 @@ void	ft_ss(list **a, list **b)
 	write(1, "ss\n", 3);
 }
 
-void	ft_push(list **dst, list **src, char c)
+void ft_push(list **dst, list **src, char c)
 {
-	list	*newsrc;
-	list	*newdst;
+	list *newsrc;
+	list *newdst;
 
 	if (*src != NULL)
 	{
@@ -45,7 +45,7 @@ void	ft_push(list **dst, list **src, char c)
 
 void	ft_rotate(list **a, char c)
 {
-	list	*tmp;
+	list *tmp;
 
 	if (*a && (*a)->next)
 	{
@@ -74,18 +74,18 @@ void	ft_revrotate(list **a, char c)
 {
 	list	*newlastnode;
 	list	*lastnode;
-	list	*beforelastnode;
+	list	*beforenode;
 
 	if (*a && (*a)->next)
 	{
 		lastnode = *a;
-		beforelastnode = NULL;
+		beforenode = NULL;
 		while (lastnode->next)
 		{
-			beforelastnode = lastnode;
+			beforenode = lastnode;
 			lastnode = lastnode->next;
 		}
-		newlastnode = beforelastnode;
+		newlastnode = beforenode;
 		if (newlastnode)
 		{
 			newlastnode->next = NULL;
@@ -101,7 +101,7 @@ void	ft_revrotate(list **a, char c)
 
 void	ft_rrr(list **a, list **b)
 {
-	ft_revrotate(a, 'r');
-	ft_revrotate(b, 'r');
+	ft_revrotate(a, 'x');
+	ft_revrotate(b, 'x');
 	write(1, "rrr\n", 4);
 }
