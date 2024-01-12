@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations1.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: estegana <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/11 17:33:18 by estegana          #+#    #+#             */
+/*   Updated: 2024/01/11 17:33:24 by estegana         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	ft_swap(list **a, char c)
+void	ft_swap(t_list **a, char c)
 {
-	list *tmp;
+	t_list	*tmp;
 
 	if (*a && (*a)->next)
 	{
@@ -17,17 +29,10 @@ void	ft_swap(list **a, char c)
 		write(1, "sb\n", 3);
 }
 
-void	ft_ss(list **a, list **b)
+void	ft_push(t_list **dst, t_list **src, char c)
 {
-	ft_swap(a, 's');
-	ft_swap(b, 's');
-	write(1, "ss\n", 3);
-}
-
-void ft_push(list **dst, list **src, char c)
-{
-	list *newsrc;
-	list *newdst;
+	t_list	*newsrc;
+	t_list	*newdst;
 
 	if (*src != NULL)
 	{
@@ -43,9 +48,9 @@ void ft_push(list **dst, list **src, char c)
 		write(1, "pb\n", 3);
 }
 
-void	ft_rotate(list **a, char c)
+void	ft_rotate(t_list **a, char c)
 {
-	list *tmp;
+	t_list	*tmp;
 
 	if (*a && (*a)->next)
 	{
@@ -63,18 +68,11 @@ void	ft_rotate(list **a, char c)
 		write(1, "rb\n", 3);
 }
 
-void	ft_rr(list **a, list **b)
+void	ft_revrotate(t_list **a, char c)
 {
-	ft_rotate(a, 'r');
-	ft_rotate(b, 'r');
-	write(1, "rr\n", 3);
-}
-
-void	ft_revrotate(list **a, char c)
-{
-	list	*newlastnode;
-	list	*lastnode;
-	list	*beforenode;
+	t_list	*newlastnode;
+	t_list	*lastnode;
+	t_list	*beforenode;
 
 	if (*a && (*a)->next)
 	{
@@ -97,11 +95,4 @@ void	ft_revrotate(list **a, char c)
 		write(1, "rra\n", 4);
 	else if (c == 'b')
 		write(1, "rrb\n", 4);
-}
-
-void	ft_rrr(list **a, list **b)
-{
-	ft_revrotate(a, 'x');
-	ft_revrotate(b, 'x');
-	write(1, "rrr\n", 4);
 }

@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftaajouteralibft.c                                 :+:      :+:    :+:   */
+/*   operations2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estegana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 17:33:06 by estegana          #+#    #+#             */
-/*   Updated: 2024/01/11 17:33:09 by estegana         ###   ########.fr       */
+/*   Created: 2024/01/11 17:35:26 by estegana          #+#    #+#             */
+/*   Updated: 2024/01/11 17:35:28 by estegana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_long_atoi(char *str)
+void	ft_ss(t_list **a, t_list **b)
 {
-	int				sign;
-	long long int	res;
+	ft_swap(a, 's');
+	ft_swap(b, 's');
+	write(1, "ss\n", 3);
+}
 
-	res = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			ft_error();
-		res = res * 10 + (*str - 48);
-		str++;
-	}
-	if ((sign * res) > 2147483647 || (sign * res) < -2147483648)
-		ft_error();
-	return (sign * res);
+void	ft_rr(t_list **a, t_list **b)
+{
+	ft_rotate(a, 'r');
+	ft_rotate(b, 'r');
+	write(1, "rr\n", 3);
+}
+
+void	ft_rrr(t_list **a, t_list **b)
+{
+	ft_revrotate(a, 'x');
+	ft_revrotate(b, 'x');
+	write(1, "rrr\n", 4);
 }

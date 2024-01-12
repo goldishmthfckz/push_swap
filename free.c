@@ -1,40 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftaajouteralibft.c                                 :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estegana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 17:33:06 by estegana          #+#    #+#             */
-/*   Updated: 2024/01/11 17:33:09 by estegana         ###   ########.fr       */
+/*   Created: 2024/01/12 15:41:29 by estegana          #+#    #+#             */
+/*   Updated: 2024/01/12 15:41:31 by estegana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_long_atoi(char *str)
-{
-	int				sign;
-	long long int	res;
+//freelist
+//freestr
 
-	res = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-		str++;
-	if (*str == '-' || *str == '+')
+//free la liste a (en cas d'erreur ou de fin d'utilisation)
+void	ft_freelist(t_list **a)
+{
+	t_list	*tmp;
+
+	while (*a)
 	{
-		if (*str == '-')
-			sign = -1;
-		str++;
+		tmp = (*a)->next;
+		(*a)->n = 0;
+		free(*a);
+		*a = tmp;
 	}
-	while (*str)
+}
+
+void	ft_freestr(char **av)
+{
+	char	*n;
+	int		i;
+
+	i = 0;
+	if (!av)
+		return ;
+	while (av[i])
 	{
-		if (!ft_isdigit(*str))
-			ft_error();
-		res = res * 10 + (*str - 48);
-		str++;
+		n = av[i];
+		i++;
+		free(n);
 	}
-	if ((sign * res) > 2147483647 || (sign * res) < -2147483648)
-		ft_error();
-	return (sign * res);
+	av[i] = NULL;
 }
