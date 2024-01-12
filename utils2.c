@@ -12,11 +12,10 @@
 
 #include "push_swap.h"
 
-//min
-//max
+//ft_min
+//ft_max
 //ilist
 //imin
-//imax?
 
 //plus pti nombre dla liste a
 int	ft_min(t_list *a)
@@ -80,3 +79,4 @@ int	imin(t_list **a)
 	}
 	return (i);
 }
+

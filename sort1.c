@@ -20,23 +20,26 @@
 //3b si le max est deja en der, on swap
 void	sort3(t_list **a)
 {
-	if (ft_min(*a) == (*a)->n)
+	if (!sorted(*a))
 	{
-		ft_revrotate(a, 'a');
-		ft_swap(a, 'a');
-	}
-	else if (ft_max(*a) == (*a)->n)
-	{
-		ft_rotate(a, 'a');
-		if (!sorted(*a))
-			ft_swap(a, 'a');
-	}
-	else
-	{
-		if (ilist(*a, ft_max(*a)) == 1)
+		if (ft_min(*a) == (*a)->n)
+		{
 			ft_revrotate(a, 'a');
-		else
 			ft_swap(a, 'a');
+		}
+		else if (ft_max(*a) == (*a)->n)
+		{
+			ft_rotate(a, 'a');
+			if (!sorted(*a))
+				ft_swap(a, 'a');
+		}
+		else
+		{
+			if (ilist(*a, ft_max(*a)) == 1)
+				ft_revrotate(a, 'a');
+			else
+				ft_swap(a, 'a');
+		}
 	}
 }
 
@@ -63,6 +66,40 @@ void	sort4(t_list **a, t_list **b)
 	ft_push(a, b, 'a');
 }
 
+void	minontop_presort5(t_list **a)
+{
+	int	i;
+
+	i = imin(a);
+	if (i == 1)
+		ft_swap(a, 'a');
+	else if (i == 2)
+	{
+		ft_rotate(a, 'a');
+		ft_rotate(a, 'a');
+	}
+	else if (i == ft_listlen(*a) - 2)
+	{
+		ft_revrotate(a, 'a');
+		ft_revrotate(a, 'a');
+	}
+	else if (i == ft_listlen(*a) - 1)
+		ft_revrotate(a, 'a');
+}
+
+void	sort5(t_list **a, t_list **b)
+{
+	minontop_presort5(a);
+	ft_push(b, a, 'b');
+	minontop_presort5(a);
+	ft_push(b, a, 'b');
+	sort3(a);
+	if ((*b)->index < (*b)->next->index)
+		ft_swap(b, 'a');
+	ft_push(a, b, 'a');
+	ft_push(a, b, 'a');
+}
+
 //trie 2 nb (sa), puis +
 void	sort(t_list **a, t_list **b)
 {
@@ -73,7 +110,10 @@ void	sort(t_list **a, t_list **b)
 	if (ft_listlen(*a) == 4)
 		sort4(a, b);
 	if (ft_listlen(*a) == 5)
-		printf("sort5 a faire\n");
+		sort5(a, b);
 	if (ft_listlen(*a) > 5)
+	{
 		printf("sortbig a faire\n");
+		sortbig(a, b);
+	}
 }

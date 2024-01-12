@@ -38,8 +38,11 @@ int		nodoublons(t_list *a);
 //sort 1
 void	sort3(t_list **a);
 void	sort4(t_list **a, t_list **b);
+void	minontop_presort5(t_list **a);
+void	sort5(t_list **a, t_list **b);
 void	sort(t_list **a, t_list **b);
 //sort 2
+void	sortfinal(t_list **a, t_list **b);
 
 //utils 1
 t_list	*lastnode(t_list *a);
