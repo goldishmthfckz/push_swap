@@ -19,7 +19,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
-# include "../libft/incl/libft.h"
+# include "libft/incl/libft.h"
 
 typedef struct list
 {
