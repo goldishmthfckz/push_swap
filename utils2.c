@@ -16,7 +16,7 @@
 //ft_max
 //ilist
 //imin
-//find_max
+//
 
 //plus pti nombre dla liste a
 int	ft_min(t_list *a)
@@ -80,3 +80,4 @@ int	imin(t_list **a)
 	}
 	return (i);
 }
+

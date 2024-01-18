@@ -27,7 +27,6 @@ typedef struct list
 	int			index;
 	int			cost;
 	int			mediane;
-	int			cheapest;
 	struct list	*target;
 	struct list	*next;
 }				t_list;
