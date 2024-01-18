@@ -19,18 +19,13 @@ int	main(int ac, char **av)
 
 	a = createlist(ac, av);
 	b = NULL;
-	if (!a || !nodoublons(a))
+	if (!nodouble(a))
 	{
 		ft_freelist(&a);
 		ft_error();
 	}
 	if (!sorted(a))
 		sort(&a, &b);
-	while (a)
-	{
-		printf("%d\n", a->n);
-		a = a->next;
-	}
 	ft_freelist(&a);
 	return (0);
 }

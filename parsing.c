@@ -12,9 +12,7 @@
 
 #include "push_swap.h"
 
-//nodoublons
-
-int	nodoublons(t_list *a)
+int	nodouble(t_list *a)
 {
 	t_list	*tmp;
 

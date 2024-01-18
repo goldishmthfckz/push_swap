@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+//long atoi
+
 //creer une node a partir des argv
 t_list	*createnode(int nb)
 {
@@ -19,7 +21,7 @@ t_list	*createnode(int nb)
 
 	new = malloc(sizeof(t_list));
 	if (!new)
-		write(1, "Error (pas de node)\n", 1);
+		return NULL;
 	new->n = nb;
 	new->next = NULL;
 	return (new);
@@ -37,7 +39,7 @@ void	addback(t_list **a, t_list *new)
 }
 
 //gerer le cas ou les av sont entre guillemets
-t_list	*quotationmarks(char **av)
+t_list	*createlist2(char **av)
 {
 	t_list	*a;
 	char	**tmp;
@@ -68,9 +70,9 @@ t_list	*createlist(int ac, char **av)
 	i = 1;
 	a = NULL;
 	if (ac < 2)
-		ft_error();
+		exit(1);
 	if (ac == 2)
-		a = quotationmarks(av);
+		a = createlist2(av);
 	else
 	{
 		while (i < ac)

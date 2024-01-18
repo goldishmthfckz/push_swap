@@ -7,7 +7,6 @@ SRCS = main.c \
 	createlist.c \
 	parsing.c \
 	free.c \
-	ftaajouteralibft.c \
 	sort1.c \
 	sort2.c \
 	operations1.c \

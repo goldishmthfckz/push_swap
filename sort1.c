@@ -12,6 +12,12 @@
 
 #include "push_swap.h"
 
+//sort3
+//sort4
+//presort5
+//sort5
+//sort (le tout)
+
 //trie 3 nb
 //1 si av[1] est le plus pti, on le met en 2nd (rra) et on swap
 //2a si av[1] est le plu grand, on le met en dernier (ra)
@@ -100,7 +106,11 @@ void	sort5(t_list **a, t_list **b)
 	ft_push(a, b, 'a');
 }
 
-//trie 2 nb (sa), puis +
+//trie 2 nb (sa),
+//ou 3 (sort3),
+//ou 4 (sort4 appelant sort3),
+//ou 5 (sort5 appelant sort3),
+//ou 5+ (sortfinal)
 void	sort(t_list **a, t_list **b)
 {
 	if (ft_listlen(*a) == 2)
@@ -112,8 +122,5 @@ void	sort(t_list **a, t_list **b)
 	if (ft_listlen(*a) == 5)
 		sort5(a, b);
 	if (ft_listlen(*a) > 5)
-	{
-		printf("sortbig a faire\n");
-		sortbig(a, b);
-	}
+		sort5plus(a, b);
 }

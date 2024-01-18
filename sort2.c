@@ -9,11 +9,19 @@
 /*   Updated: 2024/01/11 17:53:54 by estegana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-void	sortfinal(t_list **a, t_list **b)
+
+void	sort5plus(t_list **a, t_list **b)
 {
-	int	*tab;
-	
+	while (ft_listlen(*b) < 3)
+	{
+		ft_push(b, a, 'b');
+	}
+	//while (b)
+	//{
+	//	printf("%i\n", (*b)->n);
+	//	(*b) = (*b)->next;
+	//}
+	printf("fini\n");
 }

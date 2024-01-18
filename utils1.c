@@ -16,7 +16,35 @@
 //sorted
 //ft_listlen
 //ft_error
-//minontop
+//longatoi
+
+//long atoi
+long int	ft_long_atoi(char *str)
+{
+	int				sign;
+	long long int	res;
+
+	res = 0;
+	sign = 1;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			ft_error();
+		res = res * 10 + (*str - 48);
+		str++;
+	}
+	if ((res * sign) > 2147483647 || (res * sign) < -2147483648)
+		ft_error();
+	return (sign * res);
+}
 
 //nombre de la derniere node de la liste a
 t_list	*lastnode(t_list *a)

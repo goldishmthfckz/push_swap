@@ -20,6 +20,8 @@ void	ft_freelist(t_list **a)
 {
 	t_list	*tmp;
 
+	if (!a)
+		return ;
 	while (*a)
 	{
 		tmp = (*a)->next;
@@ -29,6 +31,7 @@ void	ft_freelist(t_list **a)
 	}
 }
 
+//free une chaine de char
 void	ft_freestr(char **av)
 {
 	char	*n;
