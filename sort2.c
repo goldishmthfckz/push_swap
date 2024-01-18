@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-////attribue index aux nbs dla list a ds ordre croissant
+//attribue index aux nbs dla list a ds ordre croissant
 void	initindex(t_list **a)
 {
 	int i;
@@ -45,7 +45,8 @@ void	sortindex(t_list **a)
 	}
 }
 
-
+//pb + rb (ssi le n juste pushé < mediane)
+//juska
 void	sort5plus(t_list **a, t_list **b)
 {
 	t_list *tmp;
