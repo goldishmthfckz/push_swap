@@ -11,61 +11,107 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-//attribue index aux nbs dla list a ds ordre croissant
-void	initindex(t_list **a)
+
+int	*ft_sort_int_tab(t_list **a, int *tab)
 {
-	int i;
-	t_list *tmp;
+	int	i;
+	int	j;
+	int	tmp;
+
+	i = 0;
+	while (i < ft_listlen(*a))
+	{
+		j = i + 1;
+		while (j < ft_listlen(*a))
+		{
+			if (tab[i] > tab[j])
+			{
+				tmp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = tmp;
+				j = i + 1;
+			}
+			else
+				j++;
+		}
+		i++;
+	}
+	return (tab);
+}
+
+int	ft_median(t_list **a, int *tab)
+{
+	t_list	*tmp;
+	int		i;
+	int		imed;
 
 	i = 0;
 	tmp = *a;
 	while (tmp)
 	{
-		tmp->index = i;
-		i++;
+		tab[i] = tmp->n;
 		tmp = tmp->next;
+		i++;
 	}
+	tab = ft_sort_int_tab(a, tab);
+	imed = ft_listlen(*a) / 2;
+	printf("chiffre median : %d\n", tab[imed]);
+	return (tab[imed]);
 }
 
-void	sortindex(t_list **a)
+void	firstpb(t_list **a, t_list **b, int *tab)
 {
-	t_list	*tmp;
+	int imed;
 
-	tmp = *a;
-	while (a)
+	imed = ft_median(a, tab);
+		while (ft_listlen(*a) > 5)
 	{
-		if ((*a)->n > (*a)->next->n)
+		if ((*a)->n < imed)
 		{
-			tmp->index = (*a)->index;
-			(*a)->index = tmp->next->index;
-			(*a)->next->index = tmp->index;
+			ft_push(b, a, 'b');
+			ft_rotate(b, 'b');
 		}
 		else
-			(*a) = (*a)->next;
+			ft_push(b, a, 'b');
 	}
+	sort5(a, b);
 }
 
-//pb + rb (ssi le n juste pushé < mediane)
-//juska
+//void	ft_target()
+//{
+
+//}
+
+//int	ft_cost(t_list *a)
+//{
+
+//}
+
 void	sort5plus(t_list **a, t_list **b)
 {
-	t_list *tmp;
-	int	imed;
+	int	*tab;
+	t_list *tmpb;
+	t_list *tmpa;
 
-	imed = ft_listlen(*a) / 2;
-	initindex(a);
-	sortindex(a);
-	printf("imed = %i\n", imed);
-	while (ft_listlen(*a) > 5)
+	tab = malloc(sizeof(int) * ft_listlen(*a));
+	if (!tab)
+		return ;
+	firstpb(a, b, tab);
+	free(tab);
+	reinitindex(a);
+	reinitindex(b);
+	tmpb = *b;
+	printf("--------- liste b ----------\n");
+	while (tmpb)
 	{
-		ft_push(b, a, 'b');
-		if ((*b)->index < imed)
-			ft_rotate(b, 'b');
+		printf("%d\n", tmpb->n);
+		tmpb = tmpb->next;
 	}
-	tmp = *b;
-	while (tmp)
+	tmpa = *a;
+	printf("--------- liste a ----------\n");
+	while (tmpa)
 	{
-		printf("%i\n", tmp->n);
-		tmp = tmp->next;
+		printf("%d\n", tmpa->n);
+		tmpa = tmpa->next;
 	}
 }

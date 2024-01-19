@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra -g3 -fPIC
 RM = rm -rf
 INCLUDE = -L ./libft -lft
 SRCS = main.c \

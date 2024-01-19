@@ -19,14 +19,13 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
-# include "libft/incl/libft.h"
+# include "../libft/incl/libft.h"
 
 typedef struct list
 {
 	int			n;
 	int			index;
 	int			cost;
-	int			mediane;
 	struct list	*target;
 	struct list	*next;
 }				t_list;
@@ -62,6 +61,8 @@ void	minontop_presort5(t_list **a);
 void	sort5(t_list **a, t_list **b);
 void	sort(t_list **a, t_list **b);
 //sort 2
+int		*ft_sort_int_tab(t_list **a, int *tab);
+int		ft_median(t_list **a, int *tab);
 void	sort5plus(t_list **a, t_list **b);
 
 //utils 1
@@ -74,6 +75,7 @@ int		ft_min(t_list *a);
 int		ft_max(t_list *a);
 int		ilist(t_list *a, int nb);
 int		imin(t_list **a);
+void	reinitindex(t_list **a);
 
 
 #endif

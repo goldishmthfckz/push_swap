@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
+//longatoi
 //lastnode
 //sorted
 //ft_listlen
 //ft_error
-//longatoi
 
 //long atoi
 long int	ft_long_atoi(char *str)
