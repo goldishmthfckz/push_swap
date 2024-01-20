@@ -9,20 +9,20 @@
 /*   Updated: 2024/01/11 17:53:54 by estegana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-
-int	*ft_sort_int_tab(t_list **a, int *tab)
+int	*sort_int_tab(t_list **begin_a, int *tab)
 {
 	int	i;
 	int	j;
 	int	tmp;
 
 	i = 0;
-	while (i < ft_listlen(*a))
+	while (i < ft_listlen(*begin_a))
 	{
 		j = i + 1;
-		while (j < ft_listlen(*a))
+		while (j < ft_listlen(*begin_a))
 		{
 			if (tab[i] > tab[j])
 			{
@@ -39,53 +39,59 @@ int	*ft_sort_int_tab(t_list **a, int *tab)
 	return (tab);
 }
 
-int	ft_median(t_list **a, int *tab)
+void	create_sort_tab(t_list **begin_a, int *tab)
 {
 	t_list	*tmp;
 	int		i;
-	int		imed;
 
 	i = 0;
-	tmp = *a;
+	tmp = *begin_a;
 	while (tmp)
 	{
 		tab[i] = tmp->n;
 		tmp = tmp->next;
 		i++;
 	}
-	tab = ft_sort_int_tab(a, tab);
-	imed = ft_listlen(*a) / 2;
-	printf("chiffre median : %d\n", tab[imed]);
-	return (tab[imed]);
+	tab = sort_int_tab(begin_a, tab);
 }
 
-void	firstpb(t_list **a, t_list **b, int *tab)
+int	find_max(int *tab, int len)
 {
-	int imed;
+	int	i;
+	int	max;
 
-	imed = ft_median(a, tab);
-		while (ft_listlen(*a) > 5)
+	i = 1;
+	max = tab[0];
+	while (i < len)
 	{
-		if ((*a)->n < imed)
+		if (tab[i] > max)
+			max = tab[i];
+		i++;
+	}
+	return (max);
+}
+
+void	keep_just_max(t_list **begin_a, t_list **begin_b, int *tab)
+{
+	int	max;
+	int	compteur;
+	int	len;
+
+	len = ft_listlen(*begin_a);
+	max = find_max(tab, len);
+	compteur = -1;
+	while (++compteur < len)
+	{
+		if ((*begin_a)->n != max)
 		{
-			ft_push(b, a, 'b');
-			ft_rotate(b, 'b');
+			ft_push(begin_b, begin_a, 'b');
+			if ((*begin_b)->n >= tab[(len) / 2])
+				ft_rotate(begin_b, 'b');
 		}
 		else
-			ft_push(b, a, 'b');
+			ft_rotate(begin_a, 'a');
 	}
-	sort5(a, b);
 }
-
-//void	ft_target()
-//{
-
-//}
-
-//int	ft_cost(t_list *a)
-//{
-
-//}
 
 void	sort5plus(t_list **a, t_list **b)
 {
@@ -98,7 +104,8 @@ void	sort5plus(t_list **a, t_list **b)
 	tab = malloc(sizeof(int) * ft_listlen(*a));
 	if (!tab)
 		return ;
-	firstpb(a, b, tab);
+	create_sort_tab(a, tab);
+	keep_just_max(a, b, tab);
 	free(tab);
 	max = (*a)->n;
 	while (*b)
