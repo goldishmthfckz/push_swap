@@ -63,22 +63,19 @@ void		sort5(t_list **a, t_list **b);
 void		sort(t_list **a, t_list **b);
 //sort 2
 int			*sort_int_tab(t_list **begin_a, int *tab);
-void		create_sort_tab(t_list **begin_a, int *tab);
-int			find_max(int *tab, int len);
-void		keep_just_max(t_list **begin_a, t_list **begin_b, int *tab);
+void		sorttab(t_list **begin_a, int *tab);
+void		pbtilmaxa(t_list **begin_a, t_list **begin_b, int *tab);
 void		sort5plus(t_list **a, t_list **b);
 //sort 3
 t_list		*ft_reinitstruct(int i, int maj, int move);
 int			ft_list_push_back_stock(t_list **a, int i, int maj, int move);
 int			index_maj(t_list **a, int nb, int max);
-int			count_move(t_list **begin_a, t_list **begin_b, int index, int maj);
+int			ft_cost(t_list **begin_a, t_list **begin_b, int index, int maj);
 int			create_list(t_list **a, t_list **begin_b, t_list **list, int max);
 //sort4
-void		reinitb(t_list **b, int index);
-void		reinita(t_list **a, int index_maj);
+void		inontop(t_list **a, int index, char c);
 void		move_elem(t_list **a, t_list **b, t_list **list);
-int			index_in_list(t_list **a, int nb);
-void		last_rotation(t_list **a);
+void		lastsort(t_list **a);
 
 //utils 1
 t_list		*lastnode(t_list *a);

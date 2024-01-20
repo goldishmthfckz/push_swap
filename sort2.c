@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+//ordonne ds ordre croiss le tab d'int
 int	*sort_int_tab(t_list **a, int *tab)
 {
 	int	i;
@@ -39,7 +40,9 @@ int	*sort_int_tab(t_list **a, int *tab)
 	return (tab);
 }
 
-void	create_sort_tab(t_list **a, int *tab)
+//convertit la liste a en tableau d'int
+//puis la trie ac ftsortiinttab
+void	sorttab(t_list **a, int *tab)
 {
 	t_list	*tmp;
 	int		i;
@@ -55,32 +58,18 @@ void	create_sort_tab(t_list **a, int *tab)
 	tab = sort_int_tab(a, tab);
 }
 
-int	find_max(int *tab, int len)
+//pb tt sauf le max de a
+//si le n pushed > que la mediane b, rb
+void	pbtilmaxa(t_list **a, t_list **b, int *tab)
 {
+	int	max;
 	int	i;
-	int	max;
-
-	i = 1;
-	max = tab[0];
-	while (i < len)
-	{
-		if (tab[i] > max)
-			max = tab[i];
-		i++;
-	}
-	return (max);
-}
-
-void	keep_just_max(t_list **a, t_list **b, int *tab)
-{
-	int	max;
-	int	compteur;
 	int	len;
 
 	len = ft_listlen(*a);
-	max = find_max(tab, len);
-	compteur = -1;
-	while (++compteur < len)
+	max = ft_max(*a);
+	i = -1;
+	while (++i < len)
 	{
 		if ((*a)->n != max)
 		{
@@ -93,27 +82,44 @@ void	keep_just_max(t_list **a, t_list **b, int *tab)
 	}
 }
 
+//
 void	sort5plus(t_list **a, t_list **b)
 {
 	int		*tab;
 	int		max;
-	t_list	*list;
+	t_list	*tmp;
 
 	tab = malloc(sizeof(int) * ft_listlen(*a));
 	if (!tab)
 		return ;
-	create_sort_tab(a, tab);
-	keep_just_max(a, b, tab);
+	sorttab(a, tab);
+	pbtilmaxa(a, b, tab);
 	free(tab);
 	max = (*a)->n;
 	while (*b)
 	{
-		list = NULL;
-		if (!create_list(a, b, &list, max))
+		tmp = NULL;
+		if (!create_list(a, b, &tmp, max))
 			break ;
-		move_elem(a, b, &list);
+		move_elem(a, b, &tmp);
 		ft_push(a, b, 'a');
-		ft_freelist(&list);
+		ft_freelist(&tmp);
 	}
-	last_rotation(a);
+	lastsort(a);
 }
+
+//afficher les listes
+//tmpa = *a;
+//printf("------- a -------------\n");
+//while (tmpa)
+//{
+//	printf("%d\n", tmpa->n);
+//	tmpa = tmpa->next;
+//}
+//tmpb = *b;
+//printf("------- b -------------\n");
+//while (tmpb)
+//{
+//	printf("%d\n", tmpb->n);
+//	tmpb = tmpb->next;
+//}

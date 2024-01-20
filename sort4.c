@@ -12,57 +12,45 @@
 
 #include "push_swap.h"
 
-void	reinitb(t_list **b, int index)
+//fait remonter le n de l'index en haut
+void	inontop(t_list **a, int index, char c)
 {
-	if (index <= ft_listlen(*b) / 2)
+	if (index <= ft_listlen(*a) / 2)
 	{
 		while (index > 0)
 		{
-			ft_rotate(b, 'b');
+			if (c == 'a')
+				ft_rotate(a, 'a');
+			else if (c == 'b')
+				ft_rotate(a, 'b');
 			index--;
 		}
 	}
 	else
 	{
-		while (index < ft_listlen(*b))
+		while (index < ft_listlen(*a))
 		{
-			ft_revrotate(b, 'b');
+			if (c == 'a')
+				ft_revrotate(a, 'a');
+			else if (c == 'b')
+				ft_revrotate(a, 'b');
 			index++;
 		}
 	}
 }
 
-void	reinita(t_list **a, int index_maj)
-{
-	if (index_maj <= ft_listlen(*a) / 2)
-	{
-		while (index_maj > 0)
-		{
-			ft_rotate(a, 'a');
-			index_maj--;
-		}
-	}
-	else
-	{
-		while (index_maj < ft_listlen(*a))
-		{
-			ft_revrotate(a, 'a');
-			index_maj++;
-		}
-	}
-}
-
-void	move_elem(t_list **a, t_list **b, t_list **list)
+//
+void	move_elem(t_list **a, t_list **b, t_list **c)
 {
 	int		nb_min;
 	int		i;
 	int		maj;
 	t_list	*tmp;
 
-	nb_min = (*list)->cost;
-	i = (*list)->index;
-	maj = (*list)->index_maj;
-	tmp = *list;
+	nb_min = (*c)->cost;
+	i = (*c)->index;
+	maj = (*c)->index_maj;
+	tmp = *c;
 	while (tmp)
 	{
 		if (tmp->cost <= nb_min)
@@ -73,24 +61,15 @@ void	move_elem(t_list **a, t_list **b, t_list **list)
 		}
 		tmp = tmp->next;
 	}
-	reinitb(b, i);
-	reinita(a, maj);
+	inontop(b, i, 'b');
+	inontop(a, maj, 'a');
 }
 
-void	last_rotation(t_list **a)
+//trouve l'index du plus petit n dla liste et le monte en index 0
+void	lastsort(t_list **a)
 {
-	int		min;
 	int		index;
-	t_list	*tmp;
 
-	min = (*a)->n;
-	tmp = *a;
-	while (tmp)
-	{
-		if (tmp->n < min)
-			min = tmp->n;
-		tmp = tmp->next;
-	}
-	index = ilist(*a, min);
-	reinita(a, index);
+	index = ilist(*a, ft_min(*a));
+	inontop(a, index, 'a');
 }

@@ -12,20 +12,22 @@
 
 #include "push_swap.h"
 
+//reattribue les infos a un noeud
 t_list	*ft_reinitstruct(int i, int maj, int move)
 {
-	t_list	*elem;
+	t_list	*node;
 
-	elem = malloc(sizeof(t_list));
-	if (!elem)
+	node = malloc(sizeof(t_list));
+	if (!node)
 		return (NULL);
-	elem->index = i;
-	elem->index_maj = maj;
-	elem->cost = move;
-	elem->next = NULL;
-	return (elem);
+	node->index = i;
+	node->index_maj = maj;
+	node->cost = move;
+	node->next = NULL;
+	return (node);
 }
 
+//
 int	ft_list_push_back_stock(t_list **a, int i, int maj, int move)
 {
 	t_list	*list;
@@ -48,33 +50,34 @@ int	ft_list_push_back_stock(t_list **a, int i, int maj, int move)
 	return (1);
 }
 
+//
 int	index_maj(t_list **a, int nb, int max)
 {
-	t_list	*begin;
+	t_list	*tmp;
 	int		index;
 	int		maj;
 
-	begin = *a;
+	tmp = *a;
 	maj = max;
-	while (begin)
+	while (tmp)
 	{
-		if (begin->n > nb && begin->n < maj)
-			maj = begin->n;
-		begin = begin->next;
+		if (tmp->n > nb && tmp->n < maj)
+			maj = tmp->n;
+		tmp = tmp->next;
 	}
 	index = 0;
-	begin = *a;
-	while (begin)
+	tmp = *a;
+	while (tmp)
 	{
-		if (begin->n == maj)
+		if (tmp->n == maj)
 			return (index);
-		begin = begin->next;
+		tmp = tmp->next;
 		index++;
 	}
 	return (index);
 }
 
-int	count_move(t_list **a, t_list **b, int index, int maj)
+int	ft_cost(t_list **a, t_list **b, int index, int maj)
 {
 	int	nb;
 
@@ -102,7 +105,7 @@ int	create_list(t_list **a, t_list **b, t_list **list, int max)
 	while (begin)
 	{
 		maj = index_maj(a, begin->n, max);
-		move = count_move(a, b, index, maj);
+		move = ft_cost(a, b, index, maj);
 		if (!(ft_list_push_back_stock(list, index, maj, move)))
 		{
 			ft_freelist(list);
