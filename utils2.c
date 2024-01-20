@@ -81,19 +81,19 @@ int	imin(t_list **a)
 	return (i);
 }
 
-//reinitialise les index de la liste a
-void	reinitindex(t_list **a)
-{
-	t_list	*tmp;
-	int	i;
+// //reinitialise les index de la liste a
+// void	reinitindex(t_list **a)
+// {
+// 	t_list	*tmp;
+// 	int	i;
 
-	tmp = *a;
-	i = 0;
-	while (tmp)
-	{
-		tmp->index = i;
-		printf("n = %d, i = %i\n", tmp->n, tmp->index);
-		i++;
-		tmp = tmp->next;
-	}
-}
+// 	tmp = *a;
+// 	i = 0;
+// 	while (tmp)
+// 	{
+// 		tmp->index = i;
+// 		printf("n = %d, i = %i\n", tmp->n, tmp->index);
+// 		i++;
+// 		tmp = tmp->next;
+// 	}
+// }
