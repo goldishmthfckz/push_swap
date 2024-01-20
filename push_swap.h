@@ -69,10 +69,10 @@ void		keep_just_max(t_list **begin_a, t_list **begin_b, int *tab);
 void		sort5plus(t_list **a, t_list **b);
 //sort 3
 t_list		*ft_create_elem_stock(int i, int maj, int move);
-int			ft_list_push_back_stock(t_list **begin_list, int i, int maj, int move);
-int			index_maj(t_list **begin_a, int nb, int max);
+int			ft_list_push_back_stock(t_list **a, int i, int maj, int move);
+int			index_maj(t_list **a, int nb, int max);
 int			count_move(t_list **begin_a, t_list **begin_b, int index, int maj);
-int			create_list(t_list **begin_a, t_list **begin_b, t_list **list, int max);
+int			create_list(t_list **a, t_list **begin_b, t_list **list, int max);
 //sort4
 void		move_stack_b(t_list **begin_b, int index);
 void		move_stack_a(t_list **begin_a, int index_maj);
