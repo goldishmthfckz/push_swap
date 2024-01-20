@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-int	*sort_int_tab(t_list **begin_a, int *tab)
+int	*sort_int_tab(t_list **a, int *tab)
 {
 	int	i;
 	int	j;
 	int	tmp;
 
 	i = 0;
-	while (i < ft_listlen(*begin_a))
+	while (i < ft_listlen(*a))
 	{
 		j = i + 1;
-		while (j < ft_listlen(*begin_a))
+		while (j < ft_listlen(*a))
 		{
 			if (tab[i] > tab[j])
 			{
@@ -39,20 +39,20 @@ int	*sort_int_tab(t_list **begin_a, int *tab)
 	return (tab);
 }
 
-void	create_sort_tab(t_list **begin_a, int *tab)
+void	create_sort_tab(t_list **a, int *tab)
 {
 	t_list	*tmp;
 	int		i;
 
 	i = 0;
-	tmp = *begin_a;
+	tmp = *a;
 	while (tmp)
 	{
 		tab[i] = tmp->n;
 		tmp = tmp->next;
 		i++;
 	}
-	tab = sort_int_tab(begin_a, tab);
+	tab = sort_int_tab(a, tab);
 }
 
 int	find_max(int *tab, int len)
@@ -71,25 +71,25 @@ int	find_max(int *tab, int len)
 	return (max);
 }
 
-void	keep_just_max(t_list **begin_a, t_list **begin_b, int *tab)
+void	keep_just_max(t_list **a, t_list **b, int *tab)
 {
 	int	max;
 	int	compteur;
 	int	len;
 
-	len = ft_listlen(*begin_a);
+	len = ft_listlen(*a);
 	max = find_max(tab, len);
 	compteur = -1;
 	while (++compteur < len)
 	{
-		if ((*begin_a)->n != max)
+		if ((*a)->n != max)
 		{
-			ft_push(begin_b, begin_a, 'b');
-			if ((*begin_b)->n >= tab[(len) / 2])
-				ft_rotate(begin_b, 'b');
+			ft_push(b, a, 'b');
+			if ((*b)->n >= tab[(len) / 2])
+				ft_rotate(b, 'b');
 		}
 		else
-			ft_rotate(begin_a, 'a');
+			ft_rotate(a, 'a');
 	}
 }
 

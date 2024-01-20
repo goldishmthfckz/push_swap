@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_list	*ft_create_elem_stock(int i, int maj, int move)
+t_list	*ft_reinitstruct(int i, int maj, int move)
 {
 	t_list	*elem;
 
@@ -26,35 +26,35 @@ t_list	*ft_create_elem_stock(int i, int maj, int move)
 	return (elem);
 }
 
-int	ft_list_push_back_stock(t_list **begin_list, int i, int maj, int move)
+int	ft_list_push_back_stock(t_list **a, int i, int maj, int move)
 {
 	t_list	*list;
 
-	list = *begin_list;
+	list = *a;
 	if (list)
 	{
 		while (list->next)
 			list = list->next;
-		list->next = ft_create_elem_stock(i, maj, move);
+		list->next = ft_reinitstruct(i, maj, move);
 		if (!(list->next))
 			return (0);
 	}
 	else
 	{
-		*begin_list = ft_create_elem_stock(i, maj, move);
-		if (!(*begin_list))
+		*a = ft_reinitstruct(i, maj, move);
+		if (!(*a))
 			return (0);
 	}
 	return (1);
 }
 
-int	index_maj(t_list **begin_a, int nb, int max)
+int	index_maj(t_list **a, int nb, int max)
 {
 	t_list	*begin;
 	int		index;
 	int		maj;
 
-	begin = *begin_a;
+	begin = *a;
 	maj = max;
 	while (begin)
 	{
@@ -63,7 +63,7 @@ int	index_maj(t_list **begin_a, int nb, int max)
 		begin = begin->next;
 	}
 	index = 0;
-	begin = *begin_a;
+	begin = *a;
 	while (begin)
 	{
 		if (begin->n == maj)
@@ -74,35 +74,35 @@ int	index_maj(t_list **begin_a, int nb, int max)
 	return (index);
 }
 
-int	count_move(t_list **begin_a, t_list **begin_b, int index, int maj)
+int	count_move(t_list **a, t_list **b, int index, int maj)
 {
 	int	nb;
 
 	nb = 0;
-	if (index > ft_listlen(*begin_b) / 2)
-		nb += ft_listlen(*begin_b) - index;
+	if (index > ft_listlen(*b) / 2)
+		nb += ft_listlen(*b) - index;
 	else
 		nb += index;
-	if (maj > ft_listlen(*begin_a) / 2)
-		nb += ft_listlen(*begin_a) - maj;
+	if (maj > ft_listlen(*a) / 2)
+		nb += ft_listlen(*a) - maj;
 	else
 		nb += maj;
 	return (nb);
 }
 
-int	create_list(t_list **begin_a, t_list **begin_b, t_list **list, int max)
+int	create_list(t_list **a, t_list **b, t_list **list, int max)
 {
 	int		index;
 	int		maj;
 	int		move;
 	t_list	*begin;
 
-	begin = *begin_b;
+	begin = *b;
 	index = 0;
 	while (begin)
 	{
-		maj = index_maj(begin_a, begin->n, max);
-		move = count_move(begin_a, begin_b, index, maj);
+		maj = index_maj(a, begin->n, max);
+		move = count_move(a, b, index, maj);
 		if (!(ft_list_push_back_stock(list, index, maj, move)))
 		{
 			ft_freelist(list);
