@@ -9,6 +9,8 @@ SRCS = main.c \
 	free.c \
 	sort1.c \
 	sort2.c \
+	sort3.c \
+	sort4.c \
 	operations1.c \
 	operations2.c \
 	utils1.c \

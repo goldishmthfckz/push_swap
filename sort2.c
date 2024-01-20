@@ -92,14 +92,25 @@ void	sort5plus(t_list **a, t_list **b)
 	int	*tab;
 	t_list *tmpb;
 	t_list *tmpa;
+	int max;
+	t_list	*list;
 
 	tab = malloc(sizeof(int) * ft_listlen(*a));
 	if (!tab)
 		return ;
 	firstpb(a, b, tab);
 	free(tab);
-	reinitindex(a);
-	reinitindex(b);
+	max = (*a)->n;
+	while (*b)
+	{
+		list = NULL;
+		if (!create_list(a, b, &list, max))
+			break;
+		move_elem(a, b, &list);
+		ft_push(a, b, 'a');
+		ft_freelist(&list);
+	}
+	last_rotation(a);
 	tmpb = *b;
 	printf("--------- liste b ----------\n");
 	while (tmpb)

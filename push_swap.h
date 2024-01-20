@@ -19,13 +19,14 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
-# include "../libft/incl/libft.h"
+# include "libft/incl/libft.h"
 
 typedef struct list
 {
 	int			n;
 	int			index;
 	int			cost;
+	int			index_maj;
 	struct list	*target;
 	struct list	*next;
 }				t_list;
@@ -64,6 +65,18 @@ void	sort(t_list **a, t_list **b);
 int		*ft_sort_int_tab(t_list **a, int *tab);
 int		ft_median(t_list **a, int *tab);
 void	sort5plus(t_list **a, t_list **b);
+//sort 3
+t_list	*ft_create_elem_stock(int i, int maj, int move);
+int	ft_list_push_back_stock(t_list **begin_list, int i, int maj, int move);
+int	index_maj(t_list **begin_a, int nb, int max);
+int	count_move(t_list **begin_a, t_list **begin_b, int index, int maj);
+int	create_list(t_list **begin_a, t_list **begin_b, t_list **list, int max);
+//sort4
+void	move_stack_b(t_list **begin_b, int index);
+void	move_stack_a(t_list **begin_a, int index_maj);
+void	move_elem(t_list **begin_a, t_list **begin_b, t_list **list);
+int	index_in_list(t_list **begin_list, int nb);
+void	last_rotation(t_list **begin_a);
 
 //utils 1
 t_list	*lastnode(t_list *a);
