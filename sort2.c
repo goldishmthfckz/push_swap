@@ -95,10 +95,8 @@ void	keep_just_max(t_list **begin_a, t_list **begin_b, int *tab)
 
 void	sort5plus(t_list **a, t_list **b)
 {
-	int	*tab;
-	t_list *tmpb;
-	t_list *tmpa;
-	int max;
+	int		*tab;
+	int		max;
 	t_list	*list;
 
 	tab = malloc(sizeof(int) * ft_listlen(*a));
@@ -112,24 +110,10 @@ void	sort5plus(t_list **a, t_list **b)
 	{
 		list = NULL;
 		if (!create_list(a, b, &list, max))
-			break;
+			break ;
 		move_elem(a, b, &list);
 		ft_push(a, b, 'a');
 		ft_freelist(&list);
 	}
 	last_rotation(a);
-	tmpb = *b;
-	printf("--------- liste b ----------\n");
-	while (tmpb)
-	{
-		printf("%d\n", tmpb->n);
-		tmpb = tmpb->next;
-	}
-	tmpa = *a;
-	printf("--------- liste a ----------\n");
-	while (tmpa)
-	{
-		printf("%d\n", tmpa->n);
-		tmpa = tmpa->next;
-	}
 }

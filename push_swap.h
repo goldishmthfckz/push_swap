@@ -32,63 +32,63 @@ typedef struct list
 }				t_list;
 
 //createlist
-t_list	*createnode(int nb);
-void	addback(t_list **a, t_list *new);
-t_list	*createlist2(char **av);
+t_list		*createnode(int nb);
+void		addback(t_list **a, t_list *new);
+t_list		*createlist2(char **av);
 long int	ft_long_atoi(char *str);
-t_list	*createlist(int ac, char **av);
+t_list		*createlist(int ac, char **av);
 
 //free
-void	ft_freelist(t_list **a);
-void	ft_freestr(char **av);
+void		ft_freelist(t_list **a);
+void		ft_freestr(char **av);
 
 //operations 1
-void	ft_swap(t_list **a, char c);
-void	ft_push(t_list **dst, t_list **src, char c);
-void	ft_rotate(t_list **a, char c);
-void	ft_revrotate(t_list **a, char c);
+void		ft_swap(t_list **a, char c);
+void		ft_push(t_list **dst, t_list **src, char c);
+void		ft_rotate(t_list **a, char c);
+void		ft_revrotate(t_list **a, char c);
 //operations 2
-void	ft_ss(t_list **a, t_list **b);
-void	ft_rr(t_list **a, t_list **b);
-void	ft_rrr(t_list **a, t_list **b);
+void		ft_ss(t_list **a, t_list **b);
+void		ft_rr(t_list **a, t_list **b);
+void		ft_rrr(t_list **a, t_list **b);
 
 //parsing
-int	nodouble(t_list *a);
+int			nodouble(t_list *a);
 
 //sort 1
-void	sort3(t_list **a);
-void	sort4(t_list **a, t_list **b);
-void	minontop_presort5(t_list **a);
-void	sort5(t_list **a, t_list **b);
-void	sort(t_list **a, t_list **b);
+void		sort3(t_list **a);
+void		sort4(t_list **a, t_list **b);
+void		minontop_presort5(t_list **a);
+void		sort5(t_list **a, t_list **b);
+void		sort(t_list **a, t_list **b);
 //sort 2
-int		*ft_sort_int_tab(t_list **a, int *tab);
-int		ft_median(t_list **a, int *tab);
-void	sort5plus(t_list **a, t_list **b);
+int			*sort_int_tab(t_list **begin_a, int *tab);
+void		create_sort_tab(t_list **begin_a, int *tab);
+int			find_max(int *tab, int len);
+void		keep_just_max(t_list **begin_a, t_list **begin_b, int *tab);
+void		sort5plus(t_list **a, t_list **b);
 //sort 3
-t_list	*ft_create_elem_stock(int i, int maj, int move);
-int	ft_list_push_back_stock(t_list **begin_list, int i, int maj, int move);
-int	index_maj(t_list **begin_a, int nb, int max);
-int	count_move(t_list **begin_a, t_list **begin_b, int index, int maj);
-int	create_list(t_list **begin_a, t_list **begin_b, t_list **list, int max);
+t_list		*ft_create_elem_stock(int i, int maj, int move);
+int			ft_list_push_back_stock(t_list **begin_list, int i, int maj, int move);
+int			index_maj(t_list **begin_a, int nb, int max);
+int			count_move(t_list **begin_a, t_list **begin_b, int index, int maj);
+int			create_list(t_list **begin_a, t_list **begin_b, t_list **list, int max);
 //sort4
-void	move_stack_b(t_list **begin_b, int index);
-void	move_stack_a(t_list **begin_a, int index_maj);
-void	move_elem(t_list **begin_a, t_list **begin_b, t_list **list);
-int	index_in_list(t_list **begin_list, int nb);
-void	last_rotation(t_list **begin_a);
+void		move_stack_b(t_list **begin_b, int index);
+void		move_stack_a(t_list **begin_a, int index_maj);
+void		move_elem(t_list **begin_a, t_list **begin_b, t_list **list);
+int			index_in_list(t_list **begin_list, int nb);
+void		last_rotation(t_list **begin_a);
 
 //utils 1
-t_list	*lastnode(t_list *a);
-int		sorted(t_list *a);
-int		ft_listlen(t_list *a);
-void	ft_error(void);
+t_list		*lastnode(t_list *a);
+int			sorted(t_list *a);
+int			ft_listlen(t_list *a);
+void		ft_error(void);
 //utils 2
-int		ft_min(t_list *a);
-int		ft_max(t_list *a);
-int		ilist(t_list *a, int nb);
-int		imin(t_list **a);
-void	reinitindex(t_list **a);
-
+int			ft_min(t_list *a);
+int			ft_max(t_list *a);
+int			ilist(t_list *a, int nb);
+int			imin(t_list **a);
 
 #endif

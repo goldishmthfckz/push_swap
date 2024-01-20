@@ -21,7 +21,7 @@ t_list	*createnode(int nb)
 
 	new = malloc(sizeof(t_list));
 	if (!new)
-		return NULL;
+		return (NULL);
 	new->n = nb;
 	new->next = NULL;
 	return (new);
