@@ -62,19 +62,19 @@ void		minontop_presort5(t_list **a);
 void		sort5(t_list **a, t_list **b);
 void		sort(t_list **a, t_list **b);
 //sort 2
-int			*sort_int_tab(t_list **begin_a, int *tab);
-void		sorttab(t_list **begin_a, int *tab);
-void		pbtilmaxa(t_list **begin_a, t_list **begin_b, int *tab);
+int			*sort_int_tab(t_list **a, int *tab);
+void		sorttab(t_list **a, int *tab);
+void		pbtilmaxa(t_list **a, t_list **b, int *tab);
 void		sort5plus(t_list **a, t_list **b);
 //sort 3
 t_list		*ft_reinitstruct(int i, int maj, int move);
 int			ft_list_push_back_stock(t_list **a, int i, int maj, int move);
 int			index_maj(t_list **a, int nb, int max);
-int			ft_cost(t_list **begin_a, t_list **begin_b, int index, int maj);
+int			ft_cost(t_list **a, t_list **b, int index, int maj);
 int			create_list(t_list **a, t_list **begin_b, t_list **list, int max);
 //sort4
 void		inontop(t_list **a, int index, char c);
-void		move_elem(t_list **a, t_list **b, t_list **list);
+void		move_elem(t_list **a, t_list **b, t_list **c);
 void		lastsort(t_list **a);
 
 //utils 1
