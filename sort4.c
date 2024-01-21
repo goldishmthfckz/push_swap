@@ -44,12 +44,12 @@ void	move_elem(t_list **a, t_list **b, t_list **c)
 {
 	int		nb_min;
 	int		i;
-	int		maj;
+	int		target;
 	t_list	*tmp;
 
 	nb_min = (*c)->cost;
 	i = (*c)->index;
-	maj = (*c)->index_maj;
+	target = (*c)->index_maj;
 	tmp = *c;
 	while (tmp)
 	{
@@ -57,12 +57,12 @@ void	move_elem(t_list **a, t_list **b, t_list **c)
 		{
 			nb_min = tmp->cost;
 			i = tmp->index;
-			maj = tmp->index_maj;
+			target = tmp->index_maj;
 		}
 		tmp = tmp->next;
 	}
 	inontop(b, i, 'b');
-	inontop(a, maj, 'a');
+	inontop(a, target, 'a');
 }
 
 //trouve l'index du plus petit n dla liste et le monte en index 0

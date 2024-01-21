@@ -17,15 +17,18 @@ int	main(int ac, char **av)
 	t_list	*a;
 	t_list	*b;
 
-	a = createlist(ac, av);
-	b = NULL;
-	if (!nodouble(a))
+	if (ac > 1)
 	{
+		a = createlist(ac, av);
+		b = NULL;
+		if (!nodouble(a) || !nolong(av) || !noalpha(av))
+		{
+			ft_freelist(&a);
+			ft_error();
+		}
+		if (!sorted(a))
+			sort(&a, &b);
 		ft_freelist(&a);
-		ft_error();
 	}
-	if (!sorted(a))
-		sort(&a, &b);
-	ft_freelist(&a);
 	return (0);
 }

@@ -36,13 +36,9 @@ long int	ft_long_atoi(char *str)
 	}
 	while (*str)
 	{
-		if (!ft_isdigit(*str))
-			ft_error();
 		res = res * 10 + (*str - 48);
 		str++;
 	}
-	if ((res * sign) > 2147483647 || (res * sign) < -2147483648)
-		ft_error();
 	return (sign * res);
 }
 
@@ -61,6 +57,8 @@ int	sorted(t_list *a)
 {
 	int	nb;
 
+	if (a == NULL)
+		return (0);
 	nb = a->n;
 	while (a)
 	{

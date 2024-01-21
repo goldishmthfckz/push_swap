@@ -50,26 +50,26 @@ int	ft_list_push_back_stock(t_list **a, int i, int maj, int move)
 	return (1);
 }
 
-//
-int	index_maj(t_list **a, int nb, int max)
+//trouve la target de n ds la list a puis renvoie son index
+int	itarget(t_list **a, int nb, int max)
 {
 	t_list	*tmp;
 	int		index;
-	int		maj;
+	int		target;
 
 	tmp = *a;
-	maj = max;
+	target = max;
 	while (tmp)
 	{
-		if (tmp->n > nb && tmp->n < maj)
-			maj = tmp->n;
+		if (tmp->n > nb && tmp->n < target)
+			target = tmp->n;
 		tmp = tmp->next;
 	}
 	index = 0;
 	tmp = *a;
 	while (tmp)
 	{
-		if (tmp->n == maj)
+		if (tmp->n == target)
 			return (index);
 		tmp = tmp->next;
 		index++;
@@ -93,25 +93,25 @@ int	ft_cost(t_list **a, t_list **b, int index, int maj)
 	return (nb);
 }
 
-int	create_list(t_list **a, t_list **b, t_list **list, int max)
+int	remainb(t_list **a, t_list **b, t_list **list, int max)
 {
 	int		index;
-	int		maj;
+	int		target;
 	int		move;
-	t_list	*begin;
+	t_list	*tmp;
 
-	begin = *b;
+	tmp = *b;
 	index = 0;
-	while (begin)
+	while (tmp)
 	{
-		maj = index_maj(a, begin->n, max);
-		move = ft_cost(a, b, index, maj);
-		if (!(ft_list_push_back_stock(list, index, maj, move)))
+		target = itarget(a, tmp->n, max);
+		move = ft_cost(a, b, index, target);
+		if (!(ft_list_push_back_stock(list, index, target, move)))
 		{
 			ft_freelist(list);
 			return (0);
 		}
-		begin = begin->next;
+		tmp = tmp->next;
 		index++;
 	}
 	return (1);

@@ -53,7 +53,9 @@ void		ft_rr(t_list **a, t_list **b);
 void		ft_rrr(t_list **a, t_list **b);
 
 //parsing
-int			nodouble(t_list *a);
+int	nodouble(t_list *a);
+int	nolong(char **av);
+int	noalpha(char **av);
 
 //sort 1
 void		sort3(t_list **a);
@@ -69,9 +71,9 @@ void		sort5plus(t_list **a, t_list **b);
 //sort 3
 t_list		*ft_reinitstruct(int i, int maj, int move);
 int			ft_list_push_back_stock(t_list **a, int i, int maj, int move);
-int			index_maj(t_list **a, int nb, int max);
+int			itarget(t_list **a, int nb, int max);
 int			ft_cost(t_list **a, t_list **b, int index, int maj);
-int			create_list(t_list **a, t_list **begin_b, t_list **list, int max);
+int			remainb(t_list **a, t_list **begin_b, t_list **list, int max);
 //sort4
 void		inontop(t_list **a, int index, char c);
 void		move_elem(t_list **a, t_list **b, t_list **c);

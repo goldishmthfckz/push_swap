@@ -29,3 +29,40 @@ int	nodouble(t_list *a)
 	}
 	return (1);
 }
+
+int	noalpha(char **av)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	while (av[i])
+	{
+		j = 0;
+		while (av[i][j])
+		{
+			if (av[i][j] != ' ' && av[i][j] != '-' && (av[i][j] < '0' || av[i][j] > '9'))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	nolong(char **av)
+{
+	int	i;
+
+	i = 1;
+	while (av[i])
+	{
+		if (ft_long_atoi(av[i]) < -2147483648)
+			return (0);
+		else if (ft_long_atoi(av[i]) > 2147483647)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+

@@ -99,7 +99,7 @@ void	sort5plus(t_list **a, t_list **b)
 	while (*b)
 	{
 		tmp = NULL;
-		if (!create_list(a, b, &tmp, max))
+		if (!remainb(a, b, &tmp, max))
 			break ;
 		move_elem(a, b, &tmp);
 		ft_push(a, b, 'a');
